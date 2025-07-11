@@ -1,0 +1,139 @@
+/* --- Global Styles & Variables --- */
+:root {
+    --background-color: #fdfaf6;
+    --card-background: #ffffff;
+    --primary-color: #e85a4f;
+    --title-font: 'Playfair Display', serif;
+    --body-font: 'Lato', sans-serif;
+    --text-dark: #3a3a3a;
+    --text-light: #6c6c6c;
+    --border-color: #eaeaea;
+    --shadow: 0 10px 30px rgba(0, 0, 0, 0.07);
+}
+
+body {
+    font-family: var(--body-font);
+    background-color: var(--background-color);
+    color: var(--text-dark);
+    margin: 0;
+    padding: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* --- Recipe Card Container --- */
+.recipe-card {
+    background-color: var(--card-background);
+    border-radius: 20px;
+    box-shadow: var(--shadow);
+    width: 100%;
+    max-width: 700px;
+    overflow: hidden; /* Ensures the image corners are rounded */
+    animation: slideUp 0.7s ease-out;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+/* --- Image Styling --- */
+.recipe-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.recipe-card:hover .recipe-image img {
+    transform: scale(1.05);
+}
+
+/* --- Content Styling --- */
+.recipe-content {
+    padding: 2.5rem;
+}
+
+.recipe-title {
+    font-family: var(--title-font);
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin: 0 0 0.5rem 0;
+}
+
+.recipe-description {
+    font-size: 1.1rem;
+    color: var(--text-light);
+    margin-bottom: 2rem;
+    line-height: 1.6;
+}
+
+h2 {
+    font-family: var(--title-font);
+    font-size: 1.75rem;
+    color: var(--text-dark);
+    margin-top: 2.5rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 0.5rem;
+    transition: color 0.3s, border-color 0.3s;
+}
+
+/* --- Ingredients & Instructions Lists --- */
+.recipe-ingredients ul,
+.recipe-instructions ol {
+    padding-left: 20px;
+    line-height: 1.8;
+    color: var(--text-light);
+}
+
+.recipe-ingredients ul li::marker {
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+.recipe-instructions ol {
+    padding-left: 25px;
+}
+
+.recipe-instructions li {
+    margin-bottom: 1rem;
+}
+
+/* --- Animations --- */
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* --- Dark Mode --- */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --background-color: #121212;
+        --card-background: #1e1e1e;
+        --text-dark: #e0e0e0;
+        --text-light: #a0a0a0;
+        --border-color: #333333;
+        --shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+}
+
+
+/* --- Responsive Design --- */
+@media (max-width: 600px) {
+    body {
+        padding: 1rem;
+    }
+    .recipe-content {
+        padding: 1.5rem;
+    }
+    .recipe-title {
+        font-size: 2rem;
+    }
+}
